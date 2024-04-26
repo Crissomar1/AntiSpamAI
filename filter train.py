@@ -8,8 +8,8 @@ import random
 import os
 import mailbox
 
-# nltk.download('stopwords')  # Uncomment if stopwords haven't been downloaded
-# nltk.download('wordnet')  # Uncomment if WordNetLemmatizer isn't present
+nltk.download('stopwords')  # Uncomment if stopwords haven't been downloaded
+nltk.download('wordnet')  # Uncomment if WordNetLemmatizer isn't present
 
 email_list = []
 carpetas = ['easy_ham', 'spam']
