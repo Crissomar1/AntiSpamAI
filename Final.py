@@ -38,7 +38,7 @@ class Dialog(QMainWindow, Ui_dialog):
             #encode email
             encoded_email = Email_Encoder.encode_email(filename[0], self.vocab_dict)
             #predict
-            prediction = self.model.predict(encoded_email)
+            prediction = self.model.predict(np.array([encoded_email]))
             self.label_Label.setText("Spam" if prediction[0] > 0.5 else "No Spam")
             self.label_Error.setText('')
 

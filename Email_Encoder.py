@@ -67,7 +67,6 @@ def read_vocab() -> list:
 
 def encode_email(dir, vocab_dict):
     # Carga el correo electrónico
-    email = mailbox.mbox(dir)
-    email = email[0]
+    email = [email for email in mailbox.mbox(dir)][0]
     encoded_email = one_hot_encode(email, vocab_dict)
     return encoded_email
