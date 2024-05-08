@@ -19,7 +19,7 @@ class Dialog(QMainWindow, Ui_dialog):
 
     def inicializar(self):
         # cargar modelo
-        self.model = keras.models.load_model('spam_model.keras')
+        self.model = keras.models.load_model('spam_model.keras', compile=True)
         if self.model:
             self.label_Error.setText('Modelo cargado')
         else:
@@ -36,8 +36,7 @@ class Dialog(QMainWindow, Ui_dialog):
         filename = QFileDialog.getOpenFileName(self, 'Open Mail File', '')
         if filename[0]:
             #encode email
-            email = Email_Encoder.read_email(filename[0])
-            encoded_email = Email_Encoder.one_hot_encode(email, self.vocab_dict)
+            encoded_email = Email_Encoder.encode_email(filename[0], self.vocab_dict)
             #predict
             prediction = self.model.predict(encoded_email)
             self.label_Label.setText("Spam" if prediction[0] > 0.5 else "No Spam")
